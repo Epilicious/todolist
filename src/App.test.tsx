@@ -1,9 +1,17 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import React, { ReactElement } from "react";
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+import { shallow, ShallowWrapper } from "enzyme";
+import TodoList from "./components/TodoList/TodoList";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("App", () => {
+  let wrapper: ShallowWrapper<ReactElement>;
+
+  beforeAll(() => {
+    wrapper = shallow(<App />);
+  });
+
+  it("renders Todos", () => {
+    wrapper.contains(<TodoList />);
+  });
 });
