@@ -1,17 +1,21 @@
 import React, { ReactElement } from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
-import { shallow, ShallowWrapper } from "enzyme";
+
 import TodoList from "./components/TodoList/TodoList";
+import { TodosProvider } from "./shared/TodosProvider";
+import userEvent from "@testing-library/user-event";
+import { BrowserRouter } from "react-router-dom";
 
 describe("App", () => {
-  let wrapper: ShallowWrapper<ReactElement>;
-
-  beforeAll(() => {
-    wrapper = shallow(<App />);
+  beforeEach(() => {
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
   });
-
-  it("renders Todos", () => {
-    wrapper.contains(<TodoList />);
+  it("renders", () => {
+    const navigation = screen.getByText("Home");
   });
 });
