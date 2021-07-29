@@ -80,7 +80,7 @@ export default function Navigation(): ReactElement {
             onClose={handleClose}
           >
             <MenuItem onClick={() => goToPage("todos")}>Todo List</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
+            <MenuItem onClick={() => goToPage("user")}>User</MenuItem>
           </Menu>
           <Typography variant="h6" className={classes.title}>
             {currentPage}
